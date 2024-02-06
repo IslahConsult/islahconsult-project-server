@@ -18,13 +18,14 @@ export const regester = (req, res) => {
     type_of_business = "",
     business_register = "",
     capital_training = "",
+    other = "",
   } = req.body;
 
   db.sequelize
     .query(
       `CALL mentorship(:query_type,:id,:first_name,:last_name,:email,:gender,:home_address,
         :town,:state,:qualification,:business_name,:business_phone_number,:business_email,
-        :type_of_business,:business_register,:capital_training)`,
+        :type_of_business,:business_register,:capital_training,:other)`,
       {
         replacements: {
           query_type,
@@ -43,6 +44,7 @@ export const regester = (req, res) => {
           type_of_business,
           business_register,
           capital_training,
+          other,
         },
       }
     )
